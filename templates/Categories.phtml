@@ -1,0 +1,29 @@
+<?php
+class Categories{
+function showCategorias($task){
+ require_once 'templates/layout/header.phtml'
+
+ ?>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <form action="listar" class="d-flex" method="post">
+      <select name="buscar" id="buscar">
+          <?php foreach ($task as $task) {  ?>
+             <option value="<?php echo $task->nombre_categoria?>"> <?php echo $task->nombre_categoria?> </option> 
+          <?php }?>
+      </select>
+
+      <button class="btn btn-outline-success" type="submit">Search</button>
+
+    </form>
+    
+  </div>
+</nav>
+
+<?php
+
+
+}
+}
+
+

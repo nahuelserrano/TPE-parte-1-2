@@ -1,0 +1,45 @@
+<?php 
+class SingularItem{
+function showItem($item, $categoria, $taskCategorias){
+  $itemS = $item[0]
+  ?>
+<?php require_once 'templates/layout/header.phtml' ?>
+<ul>
+
+    <li>
+        <div>
+            <?php echo "nombre:" . $itemS ["nombre"]."/";?>
+            <?php echo "apellido:". $itemS ["apellido"]."/";?>     
+            <?php echo "producto comprado:" . $itemS ["nombre_producto"]."/";?>            
+            <?php echo "tipo de compra:" . $categoria->nombre_categoria?>            
+        </div>
+        <div>
+            <a href="<?= BASE_URL ?>delete/<?php echo $itemS['id']?>"  class="btn btn-primary" type="button">borrar</a>
+        </div>
+        <div>
+        <a href="<?= BASE_URL ?>home" class="btn btn-primary">mostrar menos</a>
+        </div>
+      
+    </li>
+
+</ul>
+
+<form class="mb-3" action="<?= BASE_URL ?>edit/<?php echo $itemS['id']?>" method="post">
+          
+              <input  id="nombre" name="nombre" placeholder="nombre">
+              <input  id="apellido" name="apellido" placeholder="apellido">
+              <input  id="nombre_producto" name="nombre_producto" placeholder="nombre del producto">
+              <select name="tipoDeCompra" id="tipoDeCompra">
+                <?php foreach ($taskCategorias as $taskCategorias) {  ?>
+                    <option value="<?php echo $taskCategorias->id?>"> <?php echo $taskCategorias->nombre_categoria?> </option> 
+                    <?php }?>
+               </select>
+
+              <button type="submit" class="btn btn-primary">editar</button>
+  </form>
+
+<?php
+
+
+}
+}

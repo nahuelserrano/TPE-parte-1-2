@@ -1,0 +1,29 @@
+
+
+<?php require_once 'templates/layout/header.phtml' ?>
+
+
+
+<ul class="list-group list-group-numbered">
+
+<?php foreach ($task as $task) {  ?>
+    <li class="list-group-item">
+    <div>
+        <?php echo $task -> nombre;?>
+        <?php echo $task -> apellido;?>     
+                              
+    </div>
+    
+    <div>
+        <a href="<?= BASE_URL ?>mostrarMas/<?php echo $task->id?>"class="btn btn-primary btn-sm"  type="button">mostrar mas</a>
+    </div>
+    
+    </li>
+
+   
+   
+<?php }?>
+</ul>
+<a href="<?= BASE_URL ?>/home">Volver al Home</a>
+<?php
+
