@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+  
+</body>
+</html>
+<h3>agregar ordenes de compra</h3>
+
+<form class="mb-3" action="addOrdenCompra" method="post" enctype="multipart/form-data">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+
+    <label for="nombre_producto">Nombre del Producto:</label>
+    <input type="text" id="nombre_producto" name="nombre_producto" placeholder="Nombre del Producto" required>
+
+    <label for="tipoDeProducto">tipo Del Producto:</label>
+    <select name="tipoDeProducto" id="tipoDeProducto">
+      <?php foreach ($categorias as $cat) {  ?>
+            <option value="<?php echo $cat["id"]?>"> <?php echo $cat["TipoProducto"]?></option>
+      <?php 
+        }?>
+    </select>
+
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>
+
+    <label for="imagen">Subir Imagen:</label>
+    <input type="file" name="input_name" id="imagen" accept="image/*">
+   
+
+    <button type="submit">Enviar Orden</button>
+</form>
+
+
+
+
+
+ 
+ 
+ 

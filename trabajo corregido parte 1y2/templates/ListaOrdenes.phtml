@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribuidora 2024</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+ 
+    <div class="mt-4">
+      <h3>Órdenes de Compra</h3>
+      
+      <?php foreach ($ordenes as $orden) { ?>
+        <div class="card mt-3 p-3">
+          <div class="card-body">
+            <p><strong>Nombre del comprador:</strong> <?= $orden->nombre; ?></p>
+            <p><strong>Apellido del comprador:</strong> <?= $orden->apellido; ?></p>
+            <p><strong>Categoría del producto:</strong> <?= $orden->categoriaP; ?></p>
+            <p><strong>Nombre del producto:</strong> <?= $orden->nombre_producto; ?></p>
+
+           
+              <div class="d-flex gap-2">
+                <a href="<?= BASE_URL ?>mostrarMas/<?= $orden->id; ?>" class="btn btn-primary btn-sm">Ver más</a>
+                <?php if ($this->res->user) { ?>
+                <a href="<?= BASE_URL ?>deleteOrden/<?= $orden->id; ?>" class="btn btn-danger btn-sm">Borrar</a>
+                <?php } ?>
+              </div>
+           
+          </div>
+        </div>
+      <?php } ?>
+    </div>
+
+    <!-- Botones adicionales -->
+    <div class="mt-4 d-flex gap-2">
+      <a href="<?= BASE_URL ?>home" class="btn btn-secondary">Volver a mostrar sin filtros</a>
+      <a href="<?= BASE_URL ?>showTiposProductos" class="btn btn-info">Lista de categorías</a>
+      <?php if (!$this->res->user) { ?>
+        <a href="<?= BASE_URL ?>showLogin" class="btn btn-success">Iniciar sesión</a>
+      <?php } ?>
+    </div>
+
+    <!-- Formulario para agregar órdenes -->
+    
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

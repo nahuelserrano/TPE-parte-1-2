@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <div class="alert alert-secondary text-center">
+        <h4 class="mb-0">Tipo de producto que se quiere editar:</h4>
+        <strong><?= $TipoProducto->TipoProducto ?></strong>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Editar Tipo de Producto</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" action="<?= BASE_URL ?>editartipoProducto/<?= $TipoProducto->id ?>">
+                <div class="mb-3">
+                    <label for="TipoProductoEditado" class="form-label">Nuevo nombre del Tipo de Producto</label>
+                    <input type="text" class="form-control" id="TipoProductoEditado" name="TipoProductoEditado" required>
+                </div>
+                <button type="submit" class="btn btn-success">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3 text-center">
+        <a href="<?= BASE_URL ?>showTiposProductos" class="btn btn-secondary">Volver a la lista</a>
+    </div>
+</div>

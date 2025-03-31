@@ -1,0 +1,58 @@
+<?php 
+  $itemS = $item[0];
+?>
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Detalles de la Orden de Compra</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Nombre del comprador:</strong> <?= $itemS["nombre"] ?></li>
+                <li class="list-group-item"><strong>Apellido del comprador:</strong> <?= $itemS["apellido"] ?></li>
+                <li class="list-group-item"><strong>Producto comprado:</strong> <?= $itemS["nombre_producto"] ?></li>
+                <li class="list-group-item"><strong>Tipo de producto:</strong> <?= $TipoProducto->TipoProducto ?></li>
+                <li class="list-group-item"><strong>Descripción:</strong> <?= $itemS["descripcion"] ?></li>
+            </ul>
+        </div>
+    </div>
+    <img src="<?= BASE_URL . 'imagenes/' . basename($itemS["imagen"]) ?>" class="img-thumbnail m-1" alt="imgProducto">
+
+    <?php if($this->res->user) { ?>
+        <div class="card mt-3 shadow">
+            <div class="card-header bg-warning text-white">
+                <h5 class="mb-0">Editar Orden de Compra</h5>
+            </div>
+            <div class="card-body">
+                <form action="<?= BASE_URL ?>editOrden/<?= $itemS['id'] ?>" method="post">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" value="<?= $itemS["nombre"] ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" id="apellido" name="apellido" class="form-control" value="<?= $itemS["apellido"] ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre_producto" class="form-label">Nombre del Producto</label>
+                        <input type="text" id="nombre_producto" name="nombre_producto" class="form-control" value="<?= $itemS["nombre_producto"] ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipoProducto" class="form-label">Tipo de Producto</label>
+                        <input type="text" id="tipoProducto" name="tipoProducto" class="form-control" value="<?= $TipoProducto->TipoProducto ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" class="form-control" rows="3"><?= $itemS["descripcion"] ?></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                </form>
+            </div>
+        </div>
+    <?php } ?>
+
+    <div class="mt-3">
+        <a href="<?= BASE_URL ?>home" class="btn btn-secondary">Volver al home</a>
+    </div>
+</div>

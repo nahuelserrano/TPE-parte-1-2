@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg bg-light shadow p-3 mb-4">
+    <div class="container-fluid">
+        <h2 class="mb-0">Listar productos por:</h2>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="list-group">
+        <?php foreach ($TipoProductos as $TipoProducto) { ?>
+            <div class="d-flex align-items-center justify-content-between mb-2 p-2 border rounded shadow-sm">
+                <a href="<?= BASE_URL ?>listar/<?= $TipoProducto["id"] ?>" class="btn btn-primary me-2">
+                    <?= $TipoProducto["TipoProducto"] ?>
+                </a>
+
+                <?php if ($this->res->user) { ?>
+                    <div>
+                        <a href="<?= BASE_URL ?>deleteTipoProductos/<?= $TipoProducto["id"] ?>" class="btn btn-danger me-2">Borrar</a>
+                        <a href="<?= BASE_URL ?>showFormEditTipoProductos/<?= $TipoProducto["id"] ?>" class="btn btn-warning">Editar</a>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php } ?>
+    </div>
+
+    <?php if ($this->res->user) { ?>
+        <div class="card mt-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Agregar Tipo de Producto</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="addTipoProducto">
+                    <div class="mb-3">
+                        <label for="TipoProducto" class="form-label">Nombre Tipo de Producto</label>
+                        <input type="text" class="form-control" id="TipoProducto" name="TipoProducto" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                </form>
+            </div>
+        </div>
+    <?php } ?>
+
+    <?php if (!$this->res->user) { ?>
+        <div class="mt-3">
+            <a href="<?= BASE_URL ?>showLogin" class="btn btn-primary">Iniciar sesión</a>
+        </div>
+    <?php } ?>
+    
+</div>
+<a href="home" class="btn btn-primary">volver al home</a>
